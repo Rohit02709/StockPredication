@@ -27,10 +27,10 @@ add_meta_tag()
 
 # Sidebar Section Starts Here
 today = date.today()  # today's date
-st.write('''# StockStream ''')  # title
-st.sidebar.image("Images/StockStreamLogo1.png", width=250,
+st.write('''# StockPredication ''')  # title
+st.sidebar.image("Images/StockPredicationLogo1.png", width=250,
                  use_column_width=False)  # logo
-st.sidebar.write('''# StockStream ''')
+st.sidebar.write('''# StockPredication ''')
 
 with st.sidebar: 
         selected = option_menu("Utilities", ["Stocks Performance Comparison", "Real-Time Stock Price", "Stock Prediction", 'About'])
@@ -41,7 +41,7 @@ end = st.sidebar.date_input('End', datetime.date.today())  # end date input
 # Sidebar Section Ends Here
 
 # read csv file
-stock_df = pd.read_csv("StockStreamTickersData.csv")
+stock_df = pd.read_csv("StockPredicationTickersData.csv")
 
 # Stock Performance Comparison Section Starts Here
 if(selected == 'Stocks Performance Comparison'):  # if user selects 'Stocks Performance Comparison'
@@ -54,7 +54,7 @@ if(selected == 'Stocks Performance Comparison'):  # if user selects 'Stocks Perf
         time.sleep(2)
         # st.success('Loaded')
 
-    dict_csv = pd.read_csv('StockStreamTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
+    dict_csv = pd.read_csv('StockPredicationTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
     symb_list = []  # list for storing symbols
     for i in dropdown:  # for each asset selected
         val = dict_csv.get(i)  # get symbol from csv file
@@ -142,7 +142,7 @@ elif(selected == 'Real-Time Stock Price'):  # if user selects 'Real-Time Stock P
     with st.spinner('Loading...'):  # spinner while loading
             time.sleep(2)
 
-    dict_csv = pd.read_csv('StockStreamTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
+    dict_csv = pd.read_csv('StockPredicationTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
     symb_list = []  # list for storing symbols
 
     val = dict_csv.get(a)  # get symbol from csv file
@@ -216,7 +216,7 @@ elif(selected == 'Stock Prediction'):  # if user selects 'Stock Prediction'
     a = st.selectbox('Pick a Company', tickers)
     with st.spinner('Loading...'):  # spinner while loading
              time.sleep(2)
-    dict_csv = pd.read_csv('StockStreamTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
+    dict_csv = pd.read_csv('StockPredicationTickersData.csv', header=None, index_col=0).to_dict()[1]  # read csv file
     symb_list = []  # list for storing symbols
     val = dict_csv.get(a)  # get symbol from csv file
     symb_list.append(val)  # append symbol to list
